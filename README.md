@@ -4,7 +4,7 @@ Práctica 2 del Máster de Sistemas Inteligentes de Energía y Transporte de la 
 
 Simular en CarSim tres ensayos:
 - Ensayo de deceleración progresiva de 40 a 20 km/h, sin frenado, en punto muerto y desembragado.
-- Ensayo de deceleración progresiva de 80 a 40 km/h, sin frenado, en punto muerto y desembragado.
+- Ensayo de deceleración progresiva de 120 a 80 km/h, sin frenado, en punto muerto y desembragado.
 - Ensayo de deceleración de 120 a 80 km/h, en primera, sin frenado. Calcular la potencia.
 
 # Instrucciones
