@@ -8,13 +8,13 @@ Simular en CarSim tres ensayos:
 - Ensayo de deceleración de 120 a 80 km/h, en primera, sin frenado. Calcular la potencia.
 
 # Instrucciones
--Descargar o clonar el repositorio
--colocar la carpeta en la ubicación deseada 
--abrir MATLAB
--Correr el main 
--Elegir el ensayo deseado 
+- Descargar o clonar el repositorio
+- colocar la carpeta en la ubicación deseada 
+- abrir MATLAB
+- Correr el main 
+- Elegir el ensayo deseado 
 
 # Next steps
--Modulizar los cálculos y funciones de creación de gráficas
--Boton de limpieza de gráficas que mantenga la pantalla inical. 
--Boton de salida. 
+- Modulizar los cálculos y funciones de creación de gráficas
+- Boton de limpieza de gráficas que mantenga la pantalla inical. 
+- Boton de salida. 
