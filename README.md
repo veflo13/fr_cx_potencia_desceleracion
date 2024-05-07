@@ -14,11 +14,11 @@ Simular en CarSim tres ensayos:
 - Correr el main 
 - Elegir el ensayo deseado
 
-# Instrucciones para correr en un usuario de la UMA.
-1.-copiar la carpeta en la sig ubicación C:\Users\Usuario_UMA\Documents\MATLAB
-2.-abrir MATLAB 
-3.-Correr main
-4.- elegir un ensayo 
+# Instrucciones para correr en un usuario de la UMA, máquina virtual.
+- 1.-copiar la carpeta en la sig ubicación C:\Users\Usuario_UMA\Documents\MATLAB
+- 2.-abrir MATLAB 
+- 3.-Correr main
+- 4.- elegir un ensayo 
 
 # Next steps
 - Modulizar los cálculos y funciones de creación de gráficas
