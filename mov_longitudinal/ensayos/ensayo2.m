@@ -3,49 +3,36 @@ function ensayo2 ()
     ws=[];
     ws=ans;
 
-    t=ws(1,:);
-    acel=ws(2,:);
-    acel=acel(100:end);
-    vel=ws(3,:);
-    vel2=vel(100:end);
-    frglobal=ws(4,:);
-    frglobal=frglobal(100:end);
-    frcrueda=ws(5,:);
-    frcrueda=frcrueda(100:end);
-    t2=t(100:end);
+    t=ws(1,:); %se extrae el tiempo 
+    vel=ws(3,:); %se extrae el tiempo 
+    vel2 =vel / 3.6 ; %se pasa la vel a km/h;
+    acel = diff(vel2)./diff(t); %la derivada de la aceleracion dv/dt
+    frglobal= 0.0017; %tomo el valor obtenido del fr
+    frcrueda= 4.235932933862128e-04; %tomo el valor obtenido del fr cada rueda
 
-    frmean2=mean(frglobal);
 
     f2=figure('Menubar','none','NumberTitle','off','Name','Ensayo 2 ',... 
        'Color',[1, 1, 1],'Resize','on');
     hold on;
 
-        subplot(4,1,1)
+     %GRÁFICAS 
+        subplot(2,1,1)
         plot (t,vel)
-        xlabel('[s]');
-        ylabel('[km/h]');
-        title 'Información obtenida del Carsim de 120 a 80km/h';
-        subtitle 'velocidad';
+
+        xlabel('Tiempo [s]');
+        ylabel('Velocidad [m/s]');
+        title 'Información obtenida del Carsim de 40 a 20km/h';
+        subtitle 'Velocidad';
+
+
     
-        
-        subplot(4,1,2);
-        plot(t2,acel);
-        xlabel('[s]');
-        ylabel('[m/s^2]');
-        subtitle 'aceleración';
-        
-        subplot (4, 1, 3);
-        plot(t2,frglobal);
-        xlabel('[s]');
-        ylabel('fr');
-        subtitle 'frglobal';
+ 
+        subplot(2,1,2);
+        plot(t(2:end),acel);
+        subtitle 'Aceleración';
+        xlabel('Aceleracion [m/s2]');
+        ylabel('tiempo [s]');
     
-        
-        subplot (4, 1, 4);
-        plot(t2,frcrueda)
-        xlabel('[s]');
-        ylabel('fr-r');   
-        subtitle 'fr cada rueda';
     hold off;
     
 
@@ -55,13 +42,14 @@ function ensayo2 ()
     A=2.8
     den=1.206
     
-    numerador = [(m*acel)+(frmean2*m*9.8)];
-    denominador = [0.5 * den * A * vel2.^2];
+    numerador = [(m*acel)+(frglobal*m*9.8)];
+    denominador = [0.5 * den * A * vel.^2];
+    denominador = denominador (2:end);
     cx =[numerador./denominador];
     cxmean=mean(cx)
 
 
-    plot(t2,cx);
+    plot(t(20001:end),cx(20000:end));
+    legend ('cx_m_e_a_n= -0278')
     title 'CX ensayo 2'
-
 end
