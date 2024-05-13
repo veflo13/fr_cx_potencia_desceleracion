@@ -4,61 +4,59 @@ function ensayo1()
     ws=[];
     ws=ans;
 
-    t=ws(1,:);
-    acel=ws(2,:);
-    acel=acel(100:end);
-    vel=ws(3,:);
-    frglobal=ws(4,:);
-    frglobal=frglobal(100:end);
-    frcrueda=ws(5,:);
-    frcrueda=frcrueda(100:end);
-    t2=t(100:end);
+    t=ws(1,:); %se extrae el tiempo 
+    vel=ws(3,:); %se extrae el tiempo 
+    vel2 =vel / 3.6 ; %se pasa la vel a m/s;
+    acel = diff(vel2)./diff(t); %la derivada de la aceleracion dv/dt 
+    frglobal= acel ./ (-9.8*4); %se multiplica por la gravedad y por las 4 ruedas 
+    frcrueda=frglobal ./ 4;
 
     frmean=mean(frglobal);
+    frecR_mean = mean (frcrueda);
+
 
     f1=figure('Menubar','none','NumberTitle','off','Name','Ensayo 1 ',... 
        'Color',[1, 1, 1],'Resize','on');
    hold on; 
        %GRÁFICAS 
-        subplot(4,1,1)
-        plot(t,vel);
+        subplot(2,2,1)
+        plot (t,vel)
     
         ylim([20 40]);
         xlim ([0 80]);
-        xeti1=text(81, 18, '[s]' );
-        yeti1=text(-10, 40, '[km/h]');
+        xlabel('Tiempo [s]');
+        ylabel('Velocidad [m/s]');
         title 'Información obtenida del Carsim de 40 a 20km/h';
-        subtitle 'velocidad';
+        subtitle 'Velocidad';
+
+
     
-    
-        subplot(4,1,2);
-        plot(t2,acel);
-        ylim([-0.0840 0]);
-        xlim ([0 90]);
-        subtitle 'aceleración';
-        xeti1=text(92,-0.0840,'[s]');
-        yeti1=text(-12, 0, '[m/s^2]');
+ 
+        subplot(2,2,2);
+        plot(t(2:end),acel);
+        subtitle 'Aceleración';
+        xlabel('Aceleracion [m/s2]');
+        ylabel('frRueda');
     
         
     
-        subplot (4, 1, 3);
-        plot(t2,frglobal)
-        legend('mean fr=-0.0017')
-        ylim([-0.0021 0]);
-        xlim ([0 90]);
+        subplot (2, 2, 3);
+        plot(vel(2:end) , frglobal);
+        legend('mean fr=-0.0017','Location','south')
         subtitle 'fr global';
-        xeti1=text(92,-0.0021,'[s]');
-        yeti1=text(-8, 0, 'fr');
+        xlabel('velocidad');
+        ylabel('frGlobal');
+
+
     
     
     
-        subplot (4, 1, 4);
-        plot(t2,frcrueda)
-        ylim([-5.3555e-04 0]);
-        xlim ([0 90]);
+        subplot (2, 2, 4);
+        plot(vel(2:end),frcrueda)
         subtitle 'fr rueda';
-        xeti1=text(92,-5.3555e-04,'[s]');
-        yeti1=text(-8, 0 , 'fr-r');
+        xlabel('velocidad');
+        ylabel('fr cada rueda');
+
     hold off;
     
 end
